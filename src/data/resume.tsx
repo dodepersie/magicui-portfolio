@@ -116,7 +116,7 @@ export const DATA = {
     {
       title: "MoofliXXI",
       href: "https://mooflixxi.mahadisaputra.my.id",
-      dates: "",
+      dates: "November 2022 - August 2023",
       active: false,
       description:
         "A website to see popular movies, see playing movies on cinema and search for movies. Powered by API from TMDB.",
@@ -127,6 +127,11 @@ export const DATA = {
           href: "https://mooflixxi.mahadisaputra.my.id",
           icon: <Icons.globe className="size-3" />,
         },
+        {
+          type: "Source",
+          href: "https://github.com/dodepersie/movie-api-by-tmdb",
+          icon: <Icons.github className="size-3" />,
+        },
       ],
       image: "/1.png",
       video: "",
@@ -134,7 +139,7 @@ export const DATA = {
     {
       title: "Simple Blog with SEO Optimization",
       href: "/",
-      dates: "",
+      dates: "May 2023 - September 2023",
       active: true,
       description:
         "A simple blog that I use to share my knowledge and experience.",
@@ -173,8 +178,8 @@ export const DATA = {
       video: "",
     },
     {
-      title: "Promo Tourism",
-      href: "https://automatic.chat",
+      title: "Promo Tourism System (PTS)",
+      href: "/",
       dates: "October 2023 - January 2024",
       active: true,
       description:
