@@ -106,7 +106,7 @@ export const DATA = {
     {
       school: "ITB STIKOM BALI",
       href: "https://stikom-bali.ac.id",
-      degree: "Sarja Komputer - GPA: 3.44",
+      degree: "Sarjana Komputer - GPA: 3.44",
       logoUrl: "/stikom.png",
       start: "2019",
       end: "2025",
