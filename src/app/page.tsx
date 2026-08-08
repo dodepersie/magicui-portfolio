@@ -1,5 +1,6 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
+import FlickeringGrid from "@/components/magicui/flickering-grid";
 import { ProjectsSection } from "@/components/projects-section";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -23,7 +24,7 @@ export default function Page() {
           <div className="gap-2 flex justify-between">
             <div className="flex-col flex flex-1 space-y-1.5">
               <BlurFade delay={BLUR_FADE_DELAY}>
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none mb-4">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">
                   Hi, I&apos;m{" "}
                   <Tooltip>
                     <TooltipTrigger asChild>
@@ -45,7 +46,7 @@ export default function Page() {
               />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-28 border">
+              <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
                 <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
@@ -125,48 +126,42 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <section id="projects">
-        <div className="space-y-12 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 11}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  My Projects
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Check out my latest work
-                </h2>
-                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  I&apos;ve worked on a variety of projects, from simple
-                  websites to complex web applications. Here are a few of my
-                  favorites.
-                </p>
-              </div>
-            </div>
-          </BlurFade>
-          <ProjectsSection projects={DATA.projects} />
-        </div>
-      </section>
+      <ProjectsSection projects={DATA.projects} />
       <section id="contact">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
-            <div className="space-y-3">
-              <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                Contact
+            <div className="border rounded-xl p-10 relative">
+              <div className="absolute -top-4 border bg-foreground text-background z-10 rounded-xl px-4 py-1 left-1/2 -translate-x-1/2">
+                <span className="text-sm font-medium">Contact</span>
               </div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Get in Touch
-              </h2>
-              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Want to collab? Just shoot me a message{" "}
-                <Link
-                  href="https://wa.me/+6287862191120"
-                  className="text-blue-500 hover:underline"
-                >
-                  with a direct question on WhatsApp
-                </Link>{" "}
-                and I&apos;ll respond immediately.
-              </p>
+              <div className="absolute inset-0 top-0 left-0 right-0 h-1/2 rounded-xl overflow-hidden pointer-events-none">
+                <FlickeringGrid
+                  className="h-full w-full"
+                  squareSize={2}
+                  gridGap={2}
+                  style={{
+                    maskImage: "linear-gradient(to bottom, black, transparent)",
+                    WebkitMaskImage: "linear-gradient(to bottom, black, transparent)",
+                  }}
+                />
+              </div>
+              <div className="relative flex flex-col items-center gap-4 text-center">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Get in Touch
+                </h2>
+                <p className="mx-auto max-w-lg text-muted-foreground text-balance">
+                  Want to collab? Just shoot me a message{" "}
+                  <Link
+                    href="https://wa.me/+6287862191120"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+                  >
+                    with a direct question on WhatsApp
+                  </Link>{" "}
+                  and I&apos;ll respond immediately.
+                </p>
+              </div>
             </div>
           </BlurFade>
         </div>

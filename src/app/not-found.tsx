@@ -1,51 +1,33 @@
-import BlurFade from "@/components/magicui/blur-fade";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowLeft, HomeIcon } from "lucide-react";
-import type { Metadata } from "next";
+import { Home } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "404 - Page Not Found",
-  description: "The page you are looking for does not exist.",
-};
-
-const BLUR_FADE_DELAY = 0.04;
+import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-[70vh] flex-col items-center justify-center text-center px-4">
-      <div className="space-y-6 max-w-md mx-auto">
-        <BlurFade delay={BLUR_FADE_DELAY}>
-          <h1 className="text-8xl font-extrabold tracking-tighter bg-gradient-to-b from-foreground via-foreground/80 to-foreground/40 bg-clip-text text-transparent sm:text-9xl">
+    <div className="min-h-[calc(100vh-12rem)] flex flex-col">
+      <div className="flex-1 flex items-center justify-center p-8">
+        <div className="flex flex-col items-center text-center max-w-md relative">
+          <h1 className="text-[200px] font-semibold font-mono bg-linear-to-b from-primary/30 to-secondary/10 text-transparent bg-clip-text absolute -top-40 left-1/2 -translate-x-1/2 mask-[linear-gradient(to_bottom,black,black_20%,transparent_80%)] tracking-tighter uppercase [-webkit-text-stroke:3px_hsl(var(--primary)/0.6)]">
             404
           </h1>
-        </BlurFade>
-
-        <BlurFade delay={BLUR_FADE_DELAY * 2}>
-          <div className="space-y-2">
-            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-              Page Not Found
-            </h2>
-            <p className="text-sm text-muted-foreground sm:text-base">
-              Oops! The page you are looking for doesn&apos;t exist or has been moved.
-            </p>
+          <h2 className="text-4xl tracking-tight font-semibold text-foreground mb-2">
+            Page Not Found
+          </h2>
+          <p className="text-muted-foreground mb-8 text-balance tracking-tight font-medium">
+            The page you&apos;re looking for doesn&apos;t exist or may have been
+            moved.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="/">
+              <Button variant="outline" className="gap-2 cursor-pointer">
+                <Home className="h-4 w-4" />
+                Go to Home
+              </Button>
+            </Link>
           </div>
-        </BlurFade>
-
-        <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <div className="flex items-center justify-center gap-3 pt-4">
-            <Button
-              asChild
-              className="rounded-full px-6 gap-2 text-xs font-medium cursor-pointer shadow-sm bg-foreground text-background hover:bg-foreground/90 transition-colors"
-            >
-              <Link href="/">
-                <HomeIcon className="size-4" />
-                Return Home
-              </Link>
-            </Button>
-          </div>
-        </BlurFade>
+        </div>
       </div>
-    </main>
+    </div>
   );
 }
