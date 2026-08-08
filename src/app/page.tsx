@@ -1,14 +1,19 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { ProjectCard } from "@/components/project-card";
+import { ProjectsSection } from "@/components/projects-section";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
 
-const BLUR_FADE_DELAY = 0.04;
+const BLUR_FADE_DELAY = 0.07;
 
 export default function Page() {
   return (
@@ -17,14 +22,24 @@ export default function Page() {
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 flex justify-between">
             <div className="flex-col flex flex-1 space-y-1.5">
+              <BlurFade delay={BLUR_FADE_DELAY}>
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none mb-4">
+                  Hi, I&apos;m{" "}
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span className="cursor-help underline decoration-solid decoration-foreground decoration-2 sm:decoration-4 underline-offset-8">
+                        {DATA.name.split(" ")[0]}
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent side="top">
+                      <p>Known as: {DATA.nickname}</p>
+                    </TooltipContent>
+                  </Tooltip>{" "}
+                  👋
+                </h1>
+              </BlurFade>
               <BlurFadeText
-                delay={BLUR_FADE_DELAY}
-                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
-                yOffset={8}
-                text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
-              />
-              <BlurFadeText
-                className="max-w-[600px] md:text-xl"
+                className="max-w-[600px] md:text-sm"
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
@@ -129,26 +144,7 @@ export default function Page() {
               </div>
             </div>
           </BlurFade>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
-            {DATA.projects.map((project, id) => (
-              <BlurFade
-                key={project.title}
-                delay={BLUR_FADE_DELAY * 12 + id * 0.05}
-              >
-                <ProjectCard
-                  href={project.href}
-                  key={project.title}
-                  title={project.title}
-                  description={project.description}
-                  dates={project.dates}
-                  tags={project.technologies}
-                  image={project.image}
-                  video={project.video}
-                  links={project.links}
-                />
-              </BlurFade>
-            ))}
-          </div>
+          <ProjectsSection projects={DATA.projects} />
         </div>
       </section>
       <section id="contact">
@@ -169,7 +165,7 @@ export default function Page() {
                 >
                   with a direct question on WhatsApp
                 </Link>{" "}
-                and I&apos;ll respond whenever I can.
+                and I&apos;ll respond immediately.
               </p>
             </div>
           </BlurFade>
