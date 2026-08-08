@@ -12,7 +12,7 @@ export const DATA = {
     "Web Development | Social Media | Content Creation | SEO | IT Support",
   summary:
     "I'm a curious and adaptable professional based in Bali, Indonesia, with experience in web development, photo and video editing, social media management, and IT support. I enjoy learning new things, taking responsibility, and continuously developing my skills.",
-  avatarUrl: "/mahadi_saputra.webp",
+  avatarUrl: "/dode_mahadi.webp",
   skills: [
     "React",
     "Next.js",
