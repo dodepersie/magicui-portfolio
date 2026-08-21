@@ -46,13 +46,13 @@ export const ResumeCard = ({
     >
       <Card className="flex">
         <div className="flex-none">
-          <Avatar className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none">
+          <Avatar className="size-10 border rounded-full shadow ring-2 ring-border overflow-hidden flex-none bg-white dark:bg-white">
             <AvatarImage
               src={logoUrl}
               alt={altText}
-              className="object-contain"
+              className="object-contain p-1"
             />
-            <AvatarFallback>{altText[0]}</AvatarFallback>
+            <AvatarFallback className="bg-white text-black font-semibold">{altText[0]}</AvatarFallback>
           </Avatar>
         </div>
         <div className="flex-grow ml-4 items-center flex-col group">
